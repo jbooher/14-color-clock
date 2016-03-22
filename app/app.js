@@ -1,11 +1,11 @@
 import Clock from './modules/Clock';
+import padNumber from './modules/Utils';
 
-console.log(new Date());
+const clockDiv = document.querySelector("#clock");
 
 const clock = new Clock();
 
-console.log(clock.hours);
-console.log(clock.minutes);
-console.log(clock.seconds / 60);
-
+window.setInterval(clock.renderHexClock, 1000);
 window.setInterval(clock.render, 1000);
+window.setInterval(clock.renderBar, 1000);
+window.setInterval(clock.toHex, 1000);
