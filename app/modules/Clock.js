@@ -2,13 +2,24 @@ import padNumber from './Utils';
 
 class Clock {
 
+  constructor() {
+    this.hex = false;
+  }
+
   render() {
     const displayTime = document.querySelector("#displayTime");
-    const hour = padNumber(new Date().getHours());
-    const minute = padNumber(new Date().getMinutes());
-    const second = padNumber(new Date().getSeconds());
-    const time = `${hour}:${minute}:${second}`;
 
+    let hour = padNumber(new Date().getHours());
+    let minute = padNumber(new Date().getMinutes());
+    let second = padNumber(new Date().getSeconds());
+
+    if (this.hex) {
+      hour = padNumber(Number(new Date().getHours()).toString(16));
+      minute = padNumber(Number(new Date().getMinutes()).toString(16));
+      second = padNumber(Number(new Date().getSeconds()).toString(16));
+    }
+
+    const time = `${hour}:${minute}:${second}`;
     displayTime.innerHTML = time;
   }
 
